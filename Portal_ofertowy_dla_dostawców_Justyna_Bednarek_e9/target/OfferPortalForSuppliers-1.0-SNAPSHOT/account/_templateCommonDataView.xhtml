@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:outputLabel value="#{msg['account.nameCompany']}" for="nameCompany" />
+    <h:outputText id="nameCompany" value="#{pageBean.account.nameCompany}" title="#{msg['account.nameCompany']}" />
+    <h:messages for="nameCompany" />
+
+    <h:outputLabel value="#{msg['account.taxNumberCompany']}" for="taxNumberCompany" />
+    <h:outputText id="taxNumberCompany" value="#{pageBean.account.taxNumberCompany}" title="#{msg['account.taxNumberCompany']}" />
+    <h:messages for="taxNumberCompany" />
+
+    <h:outputLabel value="#{msg['account.name']}" for="name" />
+    <h:outputText id="name" value="#{pageBean.account.name}" title="#{msg['account.name']}" />
+    <h:messages for="name" />
+
+    <h:outputLabel value="#{msg['account.surname']}" for="surname" />
+    <h:outputText id="surname" value="#{pageBean.account.surname}" title="#{msg['account.surname']}" />
+    <h:messages for="surname" />
+
+    <h:outputLabel value="#{msg['account.email']}" for="email" />
+    <h:outputText id="email" value="#{pageBean.account.email}" title="#{msg['account.email']}" />
+    <h:messages for="email" />
+
+    <h:outputLabel value="#{msg['account.phoneNumber']}" for="phoneNumber" />
+    <h:outputText id="phoneNumber" value="#{pageBean.account.phoneNumber}" title="#{msg['account.phoneNumber']}" />
+    <h:messages for="phoneNumber" />
+
+</ui:composition>

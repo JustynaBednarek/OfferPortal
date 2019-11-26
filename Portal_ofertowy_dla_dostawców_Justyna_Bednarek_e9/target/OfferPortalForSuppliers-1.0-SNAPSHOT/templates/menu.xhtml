@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:form id="menu">
+        <ul>
+            <li><h:outputLink value="../main/index.xhtml" >${msg["main.page"]}</h:outputLink></li>
+            <f:subview id="noAuthenticationView" rendered="#{empty request.remoteUser}" >
+            <li><h:outputLink value="../login/formLogin.xhtml">${msg["menu.logIn"]} </h:outputLink></li>
+            </f:subview>
+            <f:subview id="account" rendered="#{request.isUserInRole('Administrator')}">
+                <li>${msg["menu.accounts"]}</li>
+                <ul>
+                    <li><h:outputLink value="../account/createSupplier.xhtml" >${msg["menu.accounts.createsupplier"]}</h:outputLink></li>
+                    <li><h:outputLink value="../account/createBuyer.xhtml" >${msg["menu.accounts.createbuyer"]}</h:outputLink></li>
+                    <li><h:outputLink value="../account/createAdministrator.xhtml" >${msg["menu.accounts.createadministrator"]}</h:outputLink></li>
+                </ul>
+                <li>${msg["menu.accounts.list"]}</li>
+                <ul>
+                    <li><h:outputLink value="../account/listAccount.xhtml" >${msg["menu.accounts.list"]}</h:outputLink></li>
+                </ul>
+                <li>${msg["menu.offer.list"]}</li>
+                <ul>
+                    <li><h:outputLink value="../offer/listOfferAdministrator.xhtml" >${msg["menu.offer.list"]}</h:outputLink></li>
+                </ul>
+                <li>${msg["menu.inquiry.list"]}</li>
+                <ul>
+                    <li><h:outputLink value="../inquiry/listInquiryAdministrator.xhtml" >${msg["menu.inquiry.list"]}</h:outputLink></li>
+                </ul>
+            </f:subview>
+            <f:subview id="inquiry" rendered="#{request.isUserInRole('Buyer')}">
+                <li>${msg["menu.inquirys"]}</li>
+                <ul>
+                    <li><h:outputLink value="../inquiry/createInquiry.xhtml" >${msg["menu.inquiry.createInquiry"]}</h:outputLink></li>
+                    <li><h:outputLink value="../inquiry/listInquiryBuyer.xhtml" >${msg["menu.inquiry.list"]}</h:outputLink></li>
+                </ul>
+                <li>${msg["menu.offers"]}</li>
+                <ul>
+                    <li><h:outputLink value="../offer/listOfferBuyer.xhtml" >${msg["menu.offer.list"]}</h:outputLink></li>
+                </ul>
+            </f:subview>
+            <f:subview id="offer" rendered="#{request.isUserInRole('Supplier')}">
+                <li>${msg["menu.inquirys"]}</li>
+                <ul>
+                    <li><h:outputLink value="../inquiry/listInquirySupplier.xhtml" >${msg["menu.inquiry.list"]}</h:outputLink></li>
+                </ul>
+                <li>${msg["menu.offers"]}</li>
+                <ul>                   
+                    <li><h:outputLink value="../offer/listOfferSupplier.xhtml" >${msg["menu.offer.list"]}</h:outputLink></li>                    
+                </ul>
+            </f:subview>
+            <f:subview id="myAccount" rendered="#{not empty request.remoteUser}">
+                <li>Login: ${accountSession.myLogin}</li>
+                <ul>
+                    <li><h:outputLink value="../account/detailsMyAccount.xhtml" >${msg["menu.accounts.details"]}</h:outputLink></li>
+                </ul>   
+                <li><h:commandLink action="#{accountSession.log()}" value="${msg['menu.logOut']}" /></li>
+            </f:subview>
+        </ul> 
+    </h:form>
+
+</ui:composition>
+

@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    
+    <application>
+        <locale-config>
+            <default-locale>pl</default-locale>
+            <supported-locale>pl</supported-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>i18n.messages</base-name>
+            <var>msg</var>
+        </resource-bundle>
+        <message-bundle>
+            i18n.jsf_messages
+        </message-bundle>
+        <resource-bundle>
+            <base-name>/Bundle</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+    </application>
+       
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/login/supplierFormLogin.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/login/buyerFormLogin.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/login/administratorFormLogin.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>changePassword</from-outcome>
+            <to-view-id>/account/changePasswordAccount.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>cancelAction</from-outcome>
+            <to-view-id>/main/index.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>   
+        <navigation-case>
+            <from-outcome>editAccount</from-outcome>
+            <to-view-id>/account/editAccount.xhtml</to-view-id>
+            <redirect />
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/common/success.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>    
+        <navigation-case>
+            <from-outcome>listAccounts</from-outcome>
+            <to-view-id>/account/listAccount.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>  
+        <navigation-case>
+            <from-outcome>createSupplier</from-outcome>
+            <to-view-id>/account/createSupplier.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createBuyer</from-outcome>
+            <to-view-id>/account/createBuyer.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createAdministrator</from-outcome>
+            <to-view-id>/account/createAdministrator.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createInquiry</from-outcome>
+            <to-view-id>/inquiry/createInquiry.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>  
+        <navigation-case>
+            <from-outcome>createOffer</from-outcome>
+            <to-view-id>/offer/createOffer.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>  
+        <navigation-case>
+            <from-outcome>listInquiryBuyer</from-outcome>
+            <to-view-id>/inquiry/listInquiryBuyer.xhtml</to-view-id>
+            <redirect />
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>listInquirySupplier</from-outcome>
+            <to-view-id>/inquiry/listInquirySupplier.xhtml</to-view-id>
+            <redirect />
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>listOfferBuyer</from-outcome>
+            <to-view-id>/offer/listOfferBuyer.xhtml</to-view-id>
+            <redirect />
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>listOfferSupplier</from-outcome>
+            <to-view-id>/offer/listOfferSupplier.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>            
+        <navigation-case>
+            <from-outcome>previewInquiryBuyer</from-outcome>
+            <to-view-id>/inquiry/previewInquiryBuyer.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>     
+         <navigation-case>
+            <from-outcome>detailsMyAccount</from-outcome>
+            <to-view-id>/account/detailsMyAccount.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>         
+    </navigation-rule>   
+       
+</faces-config>

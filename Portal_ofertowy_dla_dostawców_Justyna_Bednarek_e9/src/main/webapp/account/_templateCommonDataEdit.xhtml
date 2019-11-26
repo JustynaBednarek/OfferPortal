@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <h:outputLabel value="#{msg['account.nameCompany']}" for="nameCompany" />
+    <h:inputText id="nameCompany" value="#{pageBean.account.nameCompany}" title="#{msg['account.nameCompany']}" required="true">
+    </h:inputText>
+    <h:messages for="nameCompany" />
+
+    <h:outputLabel value="#{msg['account.taxNumberCompany']}" for="taxNumberCompany" />
+    <h:inputText id="taxNumberCompany" value="#{pageBean.account.taxNumberCompany}" title="#{msg['account.taxNumberCompany']}" required="true">
+    </h:inputText>
+    <h:messages for="taxNumberCompany" />
+
+    <h:outputLabel value="#{msg['account.name']}" for="name" />
+    <h:inputText id="name" value="#{pageBean.account.name}" title="#{msg['account.name']}" required="true" >
+    </h:inputText>
+    <h:messages for="name" />
+
+    <h:outputLabel value="#{msg['account.surname']}" for="surname" />
+    <h:inputText id="surname" value="#{pageBean.account.surname}" title="#{msg['account.surname']}" required="true" >
+    </h:inputText>
+    <h:messages for="surname" />
+
+    <h:outputLabel value="#{msg['account.email']}" for="email" />
+    <h:inputText id="email" value="#{pageBean.account.email}" title="#{msg['account.email']}" required="true" >
+    </h:inputText>
+    <h:messages for="email" />
+
+    <h:outputLabel value="#{msg['account.phoneNumber']}" for="phoneNumber" />
+    <h:inputText id="phone" value="#{pageBean.account.phoneNumber}" title="#{msg['account.phoneNumber']}" required="false" >
+    </h:inputText>
+    <h:messages for="phoneNumber" />
+</ui:composition>
+

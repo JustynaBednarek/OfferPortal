@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:outputLabel value="#{msg['offer.numberOffer']}" for="numberOffer" />
+    <h:inputText id="numberOffer" value="#{pageBean.offer.numberOffer}" title="#{msg['offer.numberOffer']}" />
+    <h:messages for="numberOffer" />
+
+    <h:outputLabel value="#{msg['offer.dateOffer']}" for="dateOffer" />
+    <h:inputText id="dateOffer" value="#{pageBean.offer.dateOffer}" title="#{msg['offer.dateOffer']}" >
+        <f:convertDateTime pattern="dd-MM-yyyy"/>
+    </h:inputText>
+    <h:messages for="dateOffer" />
+
+    <h:outputLabel value="#{msg['offer.authorOffer']}" for="authorOffer" />
+    <h:inputText id="authorOffer" value="#{pageBean.offer.authorOffer}" title="#{msg['offer.authorOffer']}" />
+    <h:messages for="author.offer" />
+
+    <h:outputLabel value="#{msg['offer.nameItem']}" for="nameItem" />
+    <h:inputText id="nameItem" value="#{pageBean.offer.nameItem}" title="#{msg['offer.nameItem']}" />
+    <h:messages for="nameItem" />
+
+    <h:outputLabel value="#{msg['offer.quantity']}" for="quantity" />
+    <h:inputText id="quantity" value="#{pageBean.offer.quantity}" title="#{msg['offer.quantity']}" />
+    <h:messages for="quantity" />
+
+    <h:outputLabel value="#{msg['offer.measureUnit']}" for="measureUnit" />
+    <h:inputText id="measureUnit" value="#{pageBean.offer.measureUnit}" title="#{msg['offer.measureUnit']}" />
+    <h:messages for="measureUnit" />
+
+    <h:outputLabel value="#{msg['offer.unitPrice']}" for="unitPrice" />
+    <h:inputText id="unitPrice" value="#{pageBean.offer.unitPrice}" title="#{msg['offer.unitPrice']}" />
+    <h:messages for="unitPrice" />
+
+</ui:composition>

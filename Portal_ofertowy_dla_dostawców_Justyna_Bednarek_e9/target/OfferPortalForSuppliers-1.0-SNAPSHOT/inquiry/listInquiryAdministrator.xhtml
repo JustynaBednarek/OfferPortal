@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="../templates/MainTemplate.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="top">
+        <p>${msg["main.page"]}/${msg["menu.inquiry.list"]}</p>
+    </ui:define>
+    <ui:define name="left">
+        <ui:include src="../templates/menu.xhtml" />
+    </ui:define>    
+    <ui:define name="content">
+        <h:form id="listInquirysAdministratorForm">
+            <h:messages for="listInquiry"/>
+            <h:panelGrid columns="2">
+                <h:outputLabel for="matchNumberInquiry" value="#{msg['inquiry.matchByNumberInquiry']}"/><h:inputText id="matchNumberInquiry" value="#{listInquirysAdministratorPageBean.searchNumberInquiry}" />
+                <h:outputLabel for="completedOnly" value="#{msg['inquiry.notCompleteOnly']}" /><h:selectBooleanCheckbox id="completedOnly" value="#{listInquirysAdministratorPageBean.onlyNotComplete}" />
+                <h:commandButton value="#{msg['action.reset']}" action="#{listInquirysAdministratorPageBean.clear()}" /><h:commandButton value="#{msg['action.refresh']}" action="#{listInquirysAdministratorPageBean.refresh()}" />
+            </h:panelGrid>
+            <h:dataTable id="listInquiry" var="row" value="#{listInquirysAdministratorPageBean.inquirysDataModel}" headerClass="table_header" rowClasses="row_odd,row_even">
+                <h:column id="numberInquiry">
+                    <f:facet name="header">${msg['inquiry.numberInquiry']}</f:facet>
+                    <h:outputText value="#{row.numberInquiry}" />
+                </h:column>              
+                <h:column id="state">
+                    <f:facet name="header">${msg['inquiry.state']}</f:facet>
+                    <h:panelGrid columns="2">
+                        <h:selectBooleanCheckbox id="completed" value="#{row.completed}" disabled="true"/>    
+                        <h:outputLabel for="completed" value="${msg['inquiry.completed']}" />    
+                    </h:panelGrid>
+                </h:column>                    
+                <h:column id="whoCompletInquiry">
+                    <f:facet name="header">${msg['inquiry.whoCompletInquiry']}</f:facet>
+                    <h:outputText value="#{row.whoCompleted.login}" rendered="#{row.completed}"/>    
+                </h:column> 
+                <h:column id="actions">
+                    <f:facet name="header">${msg['general.actions']}</f:facet>
+                    <h:commandButton action="#{listInquirysAdministratorPageBean.completeInquiry()}" value="${msg['action.complete']}" rendered="#{not row.completed}"/>
+                    <h:commandButton action="#{listInquirysAdministratorPageBean.notCompleteInquiry()}" value="${msg['action.notComplete']}" rendered="#{row.completed}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

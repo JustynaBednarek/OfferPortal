@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:outputLabel value="#{msg['inquiry.numberInquiry']}" for="numberInquiry" />
+    <h:outputText id="numberInquiry" value="#{pageBean.inquiry.numberInquiry}" title="#{msg['inquiry.numberInquiry']}" />
+    <h:messages for="numberInquiry" />
+
+    <h:outputLabel value="#{msg['inquiry.currency']}" for="currency" />
+    <h:outputText id="currency" value="#{pageBean.inquiry.currency}" title="#{msg['inquiry.currency']}" />
+    <h:messages for="currency" />
+
+    <h:outputLabel value="#{msg['inquiry.descriptionInquiry']}" for="descriptionInquiry" />
+    <h:outputText id="descriptionInquiry" value="#{pageBean.inquiry.descriptionInquiry}" title="#{msg['inquiry.descriptionInquiry']}" />
+    <h:messages for="descritpionInquiry" />
+
+    <h:outputLabel value="#{msg['inquiry.dateProcedureStarted']}" for="dateProcedureStarted" />
+    <h:outputText id="dateProcedureStarted" value="#{pageBean.inquiry.dateProcedureStarted}" title="#{msg['inquiry.dateProcedureStarted']}" >
+        <f:convertDateTime pattern="dd-MM-yyyy"/>
+    </h:outputText>
+    <h:messages for="dateProcedureStarted" />
+
+    <h:outputLabel value="#{msg['inquiry.dateProcedureEnd']}" for="dateProcedureEnd" />
+    <h:outputText id="dateProcedureEnd" value="#{pageBean.inquiry.dateProcedureEnd}" title="#{msg['inquiry.dateProcedureEnd']}" >
+        <f:convertDateTime pattern="dd-MM-yyyy"/>
+    </h:outputText>
+    <h:messages for="dateProcedureEnd" />
+
+    <h:outputLabel value="#{msg['inquiry.deliveryAddress']}" for="deliveryAddress" />
+    <h:outputText id="deliveryAddress" value="#{pageBean.inquiry.deliveryAddress}" title="#{msg['inquiry.deliveryAddress']}" />
+    <h:messages for="deliveryAddress" />
+
+</ui:composition>

@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="../templates/MainTemplate.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="top">
+        <p>${msg["main.page"]}/${msg["menu.offer.list"]}</p>
+    </ui:define>
+    <ui:define name="left">
+        <ui:include src="../templates/menu.xhtml" />
+    </ui:define>
+    <ui:define name="content">
+        <h:form id="listOffersAdministratorForm">
+            <h:messages for="listOffer"/>
+            <h:panelGrid columns="2">
+                <h:outputLabel for="matchNumberOffer" value="#{msg['offer.matchByNumberOffer']}"/><h:inputText id="matchNumberOffer" value="#{listOffersAdministratorPageBean.searchNumberOffer}" />
+                <h:outputLabel for="acceptedOnly" value="#{msg['offer.acceptedOnly']}" /><h:selectBooleanCheckbox id="acceptedOnly" value="#{listOffersAdministratorPageBean.acceptedOnly}" />
+                <h:commandButton value="#{msg['action.reset']}" action="#{listOffersAdministratorPageBean.clear()}" /><h:commandButton value="#{msg['action.refresh']}" action="#{listOffersAdministratorPageBean.refresh()}" />
+            </h:panelGrid>
+            <h:dataTable id="listOffer" var="row" value="#{listOffersAdministratorPageBean.offersDataModel}" headerClass="table_header" rowClasses="row_odd,row_even">
+                <h:column id="numberOffer">
+                    <f:facet name="header">${msg['offer.numberOffer']}</f:facet>
+                    <h:outputText value="#{row.numberOffer}" />
+                </h:column>  
+                <h:column id="state">
+                    <f:facet name="header">${msg['offer.state']}</f:facet>
+                    <h:panelGrid columns="2">
+                        <h:selectBooleanCheckbox id="accepted" value="#{row.accepted}" disabled="true"/>    
+                        <h:outputLabel for="accepted" value="${msg['offer.accepted']}" />    
+                    </h:panelGrid>
+                </h:column>   
+                <h:column id="whoAcceptedOffer">
+                    <f:facet name="header">${msg['offer.whoAcceptedOffer']}</f:facet>                                        
+                    <h:outputText value="#{row.whoAccepted.login}" rendered="#{row.accepted}"/>   
+                </h:column> 
+                <h:column id="actions">
+                    <f:facet name="header">${msg['general.actions']}</f:facet>
+                    <h:commandButton action="#{listOffersAdministratorPageBean.acceptedOffer()}" value="${msg['action.accept']}" rendered="#{not row.accepted}"/>
+                    <h:commandButton action="#{listOffersAdministratorPageBean.notAcceptedOffer()}" value="${msg['action.notAccept']}" rendered="#{row.accepted}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

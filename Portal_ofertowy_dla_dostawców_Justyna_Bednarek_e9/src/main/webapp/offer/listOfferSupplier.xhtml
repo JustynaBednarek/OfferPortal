@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="../templates/MainTemplate.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="top">
+        <p>${msg["main.page"]}/${msg["menu.offer.list"]}</p>
+    </ui:define>
+    <ui:define name="left">
+        <ui:include src="../templates/menu.xhtml" />
+    </ui:define>
+    <ui:define name="content">
+        <h:form id="listOffersSupplierForm">
+            <h:messages for="listOffer"/>
+            <h:panelGrid columns="2">
+                <h:outputLabel for="matchNumberOffer" value="#{msg['offer.matchByNumberOffer']}"/><h:inputText id="matchNumberOffer" value="#{listOffersSupplierPageBean.searchNumberOffer}" />
+                <h:outputLabel for="myAcceptedOnly" value="#{msg['offer.myAcceptedOnly']}" /><h:selectBooleanCheckbox id="myAcceptedOnly" value="#{listOffersSupplierPageBean.myAcceptedOnly}" />
+                <h:commandButton value="#{msg['action.reset']}" action="#{listInquirysPageBean.clear()}" /><h:commandButton value="#{msg['action.refresh']}" action="#{listOffersSupplierPageBean.refresh()}" />
+            </h:panelGrid>
+            <h:dataTable id="myListOffer" var="row" value="#{listOffersSupplierPageBean.offersDataModel}" headerClass="table_header" rowClasses="row_odd,row_even">
+                <h:column id="numberOffer">
+                    <f:facet name="header">${msg['offer.numberOffer']}</f:facet>
+                    <h:outputText value="#{row.numberOffer}" />
+                </h:column>   
+                <h:column id="buyer">
+                    <f:facet name="header">${msg['inquiry.numberInquiry']}</f:facet>
+                    <h:outputText value="#{row.inquiry.numberInquiry}" />    
+                </h:column>
+                <h:column id="stateOffer">
+                    <f:facet name="header">${msg['offer.state']}</f:facet> 
+                    <h:selectBooleanCheckbox id="accepted" value="#{row.accepted}" disabled="true"/>   
+                    <h:outputLabel for="accepted" value="${msg['offer.accepted']}" />    
+                </h:column>               
+                <h:column id="actions">
+                    <f:facet name="header">${msg['general.actions']}</f:facet>
+                    <h:commandButton action="#{listOffersSupplierPageBean.previewOfferSupplier()}" value="${msg['action.previewOffer']}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+
